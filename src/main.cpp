@@ -1,5 +1,6 @@
 #include <ESP8266React.h>
 #include <LightMqttSettingsService.h>
+#include <RelayMqttSettingsService.h>
 #include <LightStateService.h>
 #include <RelayStateService.h>
 
@@ -34,6 +35,7 @@ void setup() {
   relayStateService.begin();
 
   // start the light service
+  lightMqttSettingsService.begin();
   relayMqttSettingsService.begin();
 
   // start the server
