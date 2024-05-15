@@ -22,7 +22,10 @@ RelayStateService::RelayStateService(AsyncWebServer* server,
     _mqttClient(mqttClient),
     _relayMqttSettingsService(relayMqttSettingsService) {
   // configure led to be output
-  pinMode(RELAY_PIN, OUTPUT);
+  pinMode(RELAY_PIN1, OUTPUT);
+  pinMode(RELAY_PIN2, OUTPUT);
+  pinMode(RELAY_PIN3, OUTPUT);
+  pinMode(RELAY_PIN4, OUTPUT);
 
   // configure MQTT callback
   _mqttClient->onConnect(std::bind(&RelayStateService::registerConfig, this));
@@ -36,11 +39,17 @@ RelayStateService::RelayStateService(AsyncWebServer* server,
 
 void RelayStateService::begin() {
   _state.relay1On = DEFAULT_RELAY_STATE;
+  _state.relay2On = DEFAULT_RELAY_STATE;
+  _state.relay3On = DEFAULT_RELAY_STATE;
+  _state.relay4On = DEFAULT_RELAY_STATE;
   onConfigUpdated();
 }
 
 void RelayStateService::onConfigUpdated() {
-  digitalWrite(RELAY_PIN, _state.relay1On ? RELAY_ON : RELAY_OFF);
+  digitalWrite(RELAY_PIN1, _state.relay1On ? RELAY_ON : RELAY_OFF);
+  digitalWrite(RELAY_PIN2, _state.relay2On ? RELAY_ON : RELAY_OFF);
+  digitalWrite(RELAY_PIN3, _state.relay3On ? RELAY_ON : RELAY_OFF);
+  digitalWrite(RELAY_PIN4, _state.relay4On ? RELAY_ON : RELAY_OFF);
 }
 
 void RelayStateService::registerConfig() {

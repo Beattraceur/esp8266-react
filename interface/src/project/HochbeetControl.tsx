@@ -42,7 +42,40 @@ const HochbeetControl: FC = () => {
               color="primary"
             />
           }
-          label="Relay State?"
+          label="Relay1 State?"
+        />
+        <BlockFormControlLabel
+          control={
+            <Switch
+              name="relay2_on"
+              checked={data.relay2_on}
+              onChange={updateFormValue}
+              color="primary"
+            />
+          }
+          label="Relay2 State?"
+        />
+        <BlockFormControlLabel
+          control={
+            <Switch
+              name="relay3_on"
+              checked={data.relay3_on}
+              onChange={updateFormValue}
+              color="primary"
+            />
+          }
+          label="Relay3 State?"
+        />
+        <BlockFormControlLabel
+          control={
+            <Switch
+              name="relay4_on"
+              checked={data.relay4_on}
+              onChange={updateFormValue}
+              color="primary"
+            />
+          }
+          label="Relay4 State?"
         />
       </>
     );
